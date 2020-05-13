@@ -43,8 +43,13 @@ This will hold the basic configuration for workbox.</p>
     swDest: 'build/sw.js',
     globDirectory: 'build',
     globPatterns: [
-        "**/*.{js,css,html,png,svg}"
+        "**/*.{js,css,html}"
     ],
+    globIgnores: [
+        "**/*.map",
+        "**/asset-manifest*.js",
+        "**/service-worker.js"
+    ]
 };
 </code></pre>
 <p> This basically sets our source file for extra workbox setup for <code>workbox-cli</code> to work with, a destination directory where our generated service-worker (called <code>sw.js</code>) will live, and some other basic setup info.</p>
