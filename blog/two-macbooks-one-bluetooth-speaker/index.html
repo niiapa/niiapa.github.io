@@ -57,7 +57,7 @@ blueutil <span class="token parameter variable">--connect</span> <span class="to
 $ <span class="token function">chmod</span> +x .sleep .wakeup</code></pre></div>
 </li>
 </ul>
-<h5>User Agent Setup (Required):</h5>
+<h4>User Agent Setup (Required):</h4>
 <ul>
 <li>
 <p>Symlink the sample plist file (which already lists <code class="language-text">.sleep</code> and <code class="language-text">.wakeup</code> in the HOME directory, so no need to configure manually), to the <code class="language-text">~/Library/LaunchAgents</code> directory to install the user agent</p>
@@ -71,7 +71,7 @@ $ <span class="token function">chmod</span> +x .sleep .wakeup</code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ launchctl bootstrap gui/<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span> ~/Library/LaunchAgents/homebrew.mxcl.sleepwatcher.plist</code></pre></div>
 </li>
 </ul>
-<h5>System Agent Setup (Optional):</h5>
+<h4>System Agent Setup (Optional):</h4>
 <p><em>The difference between the user agent and the system agent is that the user agent runs when you log in, and the system agent runs when the computer starts up</em></p>
 <ul>
 <li>
