@@ -58,7 +58,10 @@ $ <span class="token function">chmod</span> +x .sleep .wakeup</code></pre></div>
 </li>
 <li>
 <p>Symlink the sample plist file (which already lists <code class="language-text">.sleep</code> and <code class="language-text">.wakeup</code> in the HOME directory, so no need to configure manually), to the <code class="language-text">~/Library/LaunchAgents</code> directory to install the system agent</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">ln</span> <span class="token parameter variable">-sfv</span> /opt/homebrew/Cellar/sleepwatcher/2.2.1/homebrew.mxcl.sleepwatcher.plist ~/Library/LaunchAgents/</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">ln</span> <span class="token parameter variable">-sfv</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew <span class="token parameter variable">--cellar</span><span class="token variable">)</span></span>/sleepwatcher/2.2.1/homebrew.mxcl.sleepwatcher.plist"</span> ~/Library/LaunchAgents/</code></pre></div>
+<blockquote>
+<p>This tutorial was written as of <code class="language-text">sleepwatcher</code> version 2.2.1 so the plist file may be different for you. Check the version you have installed by running <code class="language-text">$ brew info sleepwatcher</code> and replace the version number in the command above with the version you have installed.</p>
+</blockquote>
 </li>
 <li>
 <p>Load the configuration with launchd</p>
