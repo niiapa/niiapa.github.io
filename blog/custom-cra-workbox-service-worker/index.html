@@ -84,10 +84,14 @@ In this file we will define an injection point for our manifest, and any other w
        **/</span>
 
    	<span class="token comment">// https://github.com/GoogleChrome/workbox/issues/2095</span>
-   	<span class="token keyword">const</span> handler <span class="token operator">=</span> workbox<span class="token punctuation">.</span>precaching<span class="token punctuation">.</span><span class="token function">createHandlerBoundToURL</span><span class="token punctuation">(</span><span class="token string">'/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   	<span class="token keyword">const</span> navigationRoute <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span>NavigationRoute</span><span class="token punctuation">(</span>handler<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-   		<span class="token literal-property property">denylist</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/__</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\/[^\/]+.[^\/]+$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">]</span>
-   	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   	<span class="token keyword">const</span> handler <span class="token operator">=</span> workbox
+                       <span class="token punctuation">.</span>precaching
+                       <span class="token punctuation">.</span><span class="token function">createHandlerBoundToURL</span><span class="token punctuation">(</span><span class="token string">'/index.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   	<span class="token keyword">const</span> navigationRoute <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">workbox</span>
+               <span class="token punctuation">.</span>routing
+               <span class="token punctuation">.</span><span class="token function">NavigationRoute</span><span class="token punctuation">(</span>handler<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                   <span class="token literal-property property">denylist</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\/__</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\/[^\/]+.[^\/]+$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">]</span>
+               <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
    	workbox<span class="token punctuation">.</span>routing<span class="token punctuation">.</span><span class="token function">registerRoute</span><span class="token punctuation">(</span>navigationRoute<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
    	<span class="token comment">// Cache Images</span>
@@ -125,7 +129,7 @@ In this file we will define an injection point for our manifest, and any other w
 </blockquote>
 <p>And that's it. We're done! Our very own custom workbox service worker.
 Thanks for following along.</p>
-<p>References:</p>
+<h4>Sources:</h4>
 <ul>
 <li><a href="https://developers.google.com/web/tools/workbox/modules/workbox-cli">https://developers.google.com/web/tools/workbox/modules/workbox-cli</a></li>
 <li><a href="https://medium.com/@chinmaya.cp/custom-service-worker-in-cra-create-react-app-3b401d24b875">https://medium.com/@chinmaya.cp/custom-service-worker-in-cra-create-react-app-3b401d24b875</a></li>
