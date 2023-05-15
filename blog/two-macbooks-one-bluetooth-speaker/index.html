@@ -10,6 +10,8 @@ Plot twist, I had to do some manual research (sources linked below).</p>
 <blockquote>
 <p>This tutorial was written as of <code class="language-text">sleepwatcher</code> version 2.2.1</p>
 </blockquote>
+<h4>Tip:</h4>
+<p><code class="language-text">$</code> means run the command in your terminal (without the dollar sign)</p>
 <h2>Synopsis</h2>
 <p>It's a simple script that uses two packages, <code class="language-text">blueutil</code> and <code class="language-text">sleepwatcher</code>.</p>
 <h4><a href="https://github.com/toy/blueutil">blueutil</a></h4>
@@ -28,41 +30,37 @@ Plot twist, I had to do some manual research (sources linked below).</p>
 <p><a href="https://brew.sh/">https://brew.sh/</a></p>
 </li>
 <li>
-<p>Install blueutil and sleepwatcher with homebrew</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">brew <span class="token function">install</span> blueutil sleepwatcher</code></pre></div>
+<p>Install <code class="language-text">blueutil</code> and <code class="language-text">sleepwatcher</code> using homebrew</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ brew <span class="token function">install</span> blueutil sleepwatcher</code></pre></div>
 </li>
 <li>
 <p>Get the MAC address of your bluetooth device. It should be in the format (XX-XX-XX-XX-XX-XX)</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">blueutil <span class="token parameter variable">--paired</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ blueutil <span class="token parameter variable">--paired</span></code></pre></div>
 </li>
 <li>
-<p>Create a <code class="language-text">./sleep</code> file in your HOME directory (<code class="language-text">cd ~</code>) and add the following to disconnect your bluetooth device</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash </span>
+<p>Create a <code class="language-text">./sleep</code> file in your HOME directory (<code class="language-text">cd ~</code>) and fill in the following to disconnect your bluetooth device</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token shebang important">#!/bin/bash </span>
 <span class="token assign-left variable">DEVICE_ADDRESS</span><span class="token operator">=</span><span class="token string">"XX-XX-XX-XX-XX-XX"</span>
 blueutil <span class="token parameter variable">--disconnect</span> <span class="token variable">$DEVICE_ADDRESS</span></code></pre></div>
 </li>
 <li>
-<p>Create a <code class="language-text">./wakeup</code> file in your HOME directory (<code class="language-text">cd ~</code>) and add the following to connect your bluetooth device</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<p>Create a <code class="language-text">./wakeup</code> file in your HOME directory (<code class="language-text">cd ~</code>) and fill in the following to connect your bluetooth device</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token shebang important">#!/bin/bash</span>
 <span class="token assign-left variable">DEVICE_ADDRESS</span><span class="token operator">=</span><span class="token string">"XX-XX-XX-XX-XX-XX"</span>
 blueutil <span class="token parameter variable">--connect</span> <span class="token variable">$DEVICE_ADDRESS</span></code></pre></div>
 </li>
 <li>
 <p>Make the files executable</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ~
-<span class="token function">chmod</span> +x .sleep .wakeup</code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> ~
+$ <span class="token function">chmod</span> +x .sleep .wakeup</code></pre></div>
 </li>
 <li>
-<p>Add the sample plist file (which already lists <code class="language-text">.sleep</code> and <code class="language-text">.wakeup</code> in the HOME directory, so no need to configure manually),</p>
+<p>Add the sample plist file (which already lists <code class="language-text">.sleep</code> and <code class="language-text">.wakeup</code> in the HOME directory, so no need to configure manually), to the <code class="language-text">/Library/LaunchAgents</code> directory to install the system agent</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> launchctl load ~/Library/LaunchAgents/homebrew.mxcl.sleepwatcher.plist</code></pre></div>
 </li>
-</ul>
-<p>to the <code class="language-text">/Library/LaunchAgents</code> directory to install the system agent
-<code class="language-text">bash
-    sudo launchctl load ~/Library/LaunchAgents/homebrew.mxcl.sleepwatcher.plist
-    </code></p>
-<ul>
-<li>Load the plist file
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> launchctl bootstrap gui/<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span> ~/Library/LaunchAgents/homebrew.mxcl.sleepwatcher.plist</code></pre></div>
+<li>
+<p>Load the plist file</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> launchctl bootstrap gui/<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span> ~/Library/LaunchAgents/homebrew.mxcl.sleepwatcher.plist</code></pre></div>
 </li>
 </ul>
 <p>And voila, you're done! 🎉</p>
