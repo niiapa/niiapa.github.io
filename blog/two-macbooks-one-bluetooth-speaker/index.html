@@ -68,7 +68,8 @@ $ <span class="token function">chmod</span> +x .sleep .wakeup</code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">sudo</span> launchctl bootstrap gui/<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span> ~/Library/LaunchAgents/homebrew.mxcl.sleepwatcher.plist</code></pre></div>
 </li>
 </ul>
-<p>And voila, you're done! 🎉</p>
+<p>And voila, you're done! 🎉
+Now when one MacBook sleeps, it automatically disconnects from the speaker, and since I've run this setup on my other machine too, when it wakes up, it automatically connects to the speaker. And vice versa.</p>
 <h4>Sources:</h4>
 <ul>
 <li><a href="https://www.kodiakskorner.com/log/258">https://www.kodiakskorner.com/log/258</a></li>
