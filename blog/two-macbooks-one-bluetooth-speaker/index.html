@@ -46,6 +46,8 @@ blueutil <span class="token parameter variable">--disconnect</span> <span class=
 <li>
 <p>Create a <code class="language-text">./wakeup</code> file in your HOME directory (<code class="language-text">cd ~</code>) and fill in the following to connect your bluetooth device</p>
 <div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># Sleep for 10 seconds before attempting connection</span>
+<span class="token function">sleep</span> <span class="token number">10</span>
 <span class="token assign-left variable">DEVICE_ADDRESS</span><span class="token operator">=</span><span class="token string">"XX-XX-XX-XX-XX-XX"</span>
 blueutil <span class="token parameter variable">--connect</span> <span class="token variable">$DEVICE_ADDRESS</span></code></pre></div>
 </li>
